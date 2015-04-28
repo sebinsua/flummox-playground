@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  watch: true,
+  colors: true,
   devtool: 'inline-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:8081',

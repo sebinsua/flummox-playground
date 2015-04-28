@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  colors: true,
   entry: [
     './client/app',
     './scss/app'
