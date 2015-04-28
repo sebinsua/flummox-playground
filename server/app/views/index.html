@@ -10,7 +10,7 @@
   <body>
     <div id="app">{{ appString | safe }}</div>
 
-    {% if env.NODE_ENV == 'development' %}
+    {% if NODE_ENV == 'development' %}
       <script src="http://localhost:8081/js/app.js" defer></script>
     {% else %}
       <script src="/js/app.min.js" defer></script>

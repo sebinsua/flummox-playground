@@ -9,6 +9,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:8081',
     'webpack/hot/only-dev-server',
     './client/app',
+    './scss/app'
   ],
   output: {
     path: path.join(__dirname, '/public/js/'),
@@ -24,11 +25,12 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.scss']
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?externalHelpers&optional=es7.asyncFunctions'], exclude: /node_modules/ }
+      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?externalHelpers&optional=es7.asyncFunctions'], exclude: /node_modules/ },
+      { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   }
 };

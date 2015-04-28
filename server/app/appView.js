@@ -35,7 +35,7 @@ export default function (app) {
 
     render({
       appString: appString,
-      env: process.env
+      NODE_ENV: process.env.NODE_ENV
     });
   });
 }
