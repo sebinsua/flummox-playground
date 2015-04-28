@@ -1,0 +1,41 @@
+{
+  "name": "flummox-playground",
+  "version": "0.0.1",
+  "description": "A Flummox Playground",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebinsua/flummox-playground.git"
+  },
+  "keywords": [
+    "flummox",
+    "flux",
+    "react",
+    "reactjs"
+  ],
+  "author": "Seb Insua <me@sebinsua.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebinsua/flummox-playground/issues"
+  },
+  "homepage": "https://github.com/sebinsua/flummox-playground",
+  "dependencies": {
+    "babel": "^5.1.13",
+    "babel-core": "^5.1.13",
+    "express": "^4.12.3",
+    "express-static": "^1.0.3",
+    "flummox": "^4.0.0-alpha",
+    "isomorphic-fetch": "^2.0.2",
+    "nunjucks": "^1.3.4",
+    "react": "^0.13.2",
+    "react-router": "^0.13.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^5.0.0",
+    "babel-runtime": "^5.1.13",
+    "webpack": "^1.8.10"
+  }
+}
