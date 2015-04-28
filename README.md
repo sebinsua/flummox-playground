@@ -1,3 +1,4 @@
+- [ ] Fix the Webpack error: https://github.com/webpack/webpack/issues/904
 - [x] Find commonalities between server/appView and client/app.
 - [ ] Refactor so that it is simpler. Remove code that is not required.
 - [ ] Use `<Link>`. Test that some basic things work, for example URLs.

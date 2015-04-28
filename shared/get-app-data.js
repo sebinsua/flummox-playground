@@ -1,7 +1,7 @@
 import Router from 'react-router';
 
-import performRouteHandlerStaticMethod from './utils/performRouteHandlerStaticMethod';
-import Flux from './Flux';
+import performRouteHandlerStaticMethod from './utils/perform-route-handler-static-method';
+import Flux from './flux';
 import routes from './routes';
 
 async function getAppData(currentUrl) {
@@ -33,11 +33,13 @@ async function getAppData(currentUrl) {
     );
   });
 
-  const appData = { flux, Handler, state };
+  const appData = { router, flux, Handler, state };
 
   try {
     await performRouteHandlerStaticMethod(state.routes, 'routerWillRun', appData);
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 
   return appData;
 }

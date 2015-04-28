@@ -1,4 +1,6 @@
 import React from 'react';
+import Router from 'react-router';
+import FluxComponent from 'flummox/component';
 import url from 'url';
 
 import getAppData from '../../shared/get-app-data';
@@ -11,7 +13,7 @@ async function main() {
   };
 
   try {
-    var { flux, Handler, state } = await getAppData(currentUrl);
+    var { router, flux, Handler, state } = await getAppData(currentUrl);
   } catch (error) {
     if (error.redirect) {
       return redirect(error.redirect);
@@ -26,27 +28,27 @@ async function main() {
     </FluxComponent>,
     document.getElementById('app')
   );
+
+  // Intercept local route changes
+  document.onclick = event => {
+    const { toElement: target } = event;
+
+    if (!target) return;
+
+    if (target.tagName !== 'A') return;
+
+    const href = target.getAttribute('href');
+
+    if (!href) return;
+
+    const resolvedHref = url.resolve(window.location.href, href);
+    const { host, path } = url.parse(resolvedHref);
+
+    if (host === window.location.host) {
+      event.preventDefault();
+      router.transitionTo(path);
+    }
+  };
 }
-
-// Intercept local route changes
-document.onclick = event => {
-  const { toElement: target } = event;
-
-  if (!target) return;
-
-  if (target.tagName !== 'A') return;
-
-  const href = target.getAttribute('href');
-
-  if (!href) return;
-
-  const resolvedHref = url.resolve(window.location.href, href);
-  const { host, path } = url.parse(resolvedHref);
-
-  if (host === window.location.host) {
-    event.preventDefault();
-    router.transitionTo(path);
-  }
-};
 
 main();

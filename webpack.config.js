@@ -29,7 +29,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['babel?optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
+      { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
       { test: /\.scss$/, loader: 'style!css!sass' },
     ]
   }

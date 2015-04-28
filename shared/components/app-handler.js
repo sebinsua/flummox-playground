@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import { RouteHandler } from 'react-router';
-import AppNav from './AppNav';
+import AppNav from './app-nav';
 
 const { CSSTransitionGroup } = React.addons;
 
