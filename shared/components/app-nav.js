@@ -7,7 +7,8 @@ class AppNav extends React.Component {
     // const c = 'red';
     return (
       <div className="red">
-        <Link to="someplace">Some text goes here. And it works perfectly</Link>
+        <Link to="app">Home</Link>
+        <Link to="someplace">Some place</Link>
       </div>
     );
   }

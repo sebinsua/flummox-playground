@@ -30,7 +30,9 @@ async function main() {
   );
 
   // Intercept local route changes
+  /*
   document.onclick = event => {
+    console.log('clicking');
     const { toElement: target } = event;
 
     if (!target) return;
@@ -46,9 +48,11 @@ async function main() {
 
     if (host === window.location.host) {
       event.preventDefault();
+      console.log(path);
       router.transitionTo(path);
     }
   };
+  */
 }
 
 main();

@@ -6,8 +6,8 @@ var path = require('path');
 module.exports = {
   colors: true,
   entry: [
-    './client/app',
-    './scss/app'
+    './client/app'
+    // './scss/app'
   ],
   output: {
     path: path.join(__dirname, '/public/js/'),
@@ -30,7 +30,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
-      { test: /\.scss$/, loader: 'style!css!sass' },
+      // { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   }
 };
