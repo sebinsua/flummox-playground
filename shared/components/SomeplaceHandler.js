@@ -1,5 +1,4 @@
 import React from 'react/addons';
-import { RouteHandler } from 'react-router';
 
 class SomeplaceHandler extends React.Component {
   render() {

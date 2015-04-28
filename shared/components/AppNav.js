@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class AppNav extends React.Component {
 
   render() {
     return (
       <div>
-        <a href="someplace">Some text goes here. And it works perfectly</a>
+        <Link to="someplace">Some text goes here. And it works perfectly</Link>
       </div>
     );
   }
