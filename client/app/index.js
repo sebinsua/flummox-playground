@@ -1,24 +1,24 @@
 import React from 'react';
-import Router from 'react-router';
-import FluxComponent from 'flummox/component';
-import Flux from '../../shared/Flux';
-import routes from '../../shared/routes';
-import performRouteHandlerStaticMethod from '../../shared/utils/performRouteHandlerStaticMethod';
 import url from 'url';
 
-// Initialize flux
-const flux = new Flux();
+import getAppData from '../../shared/get-app-data';
 
-const router = Router.create({
-  routes: routes,
-  location: Router.HistoryLocation
-});
+async function main() {
+  const currentUrl = Router.HistoryLocation;
+  const redirect = (url) => {
+    console.error('redirect is not supported on the client yet');
+    console.log(url);
+  };
 
-// Render app
-router.run(async (Handler, state) => {
-  const routeHandlerInfo = { state, flux };
+  try {
+    var { flux, Handler, state } = await getAppData(currentUrl);
+  } catch (error) {
+    if (error.redirect) {
+      return redirect(error.redirect);
+    }
 
-  await performRouteHandlerStaticMethod(state.routes, 'routerWillRun', routeHandlerInfo);
+    throw error;
+  }
 
   React.render(
     <FluxComponent flux={flux}>
@@ -26,7 +26,7 @@ router.run(async (Handler, state) => {
     </FluxComponent>,
     document.getElementById('app')
   );
-});
+}
 
 // Intercept local route changes
 document.onclick = event => {
@@ -48,3 +48,5 @@ document.onclick = event => {
     router.transitionTo(path);
   }
 };
+
+main();
