@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('babel/register')({
   optional: ['es7.asyncFunctions']
 });
