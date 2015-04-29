@@ -4,12 +4,12 @@ import performRouteHandlerStaticMethod from './utils/perform-route-handler-stati
 import Flux from './flux';
 import routes from './routes';
 
-async function getAppData(currentUrl, render) {
+async function loadApp(currentUrl, render) {
   const flux = new Flux();
 
   const router = Router.create({
     routes: routes,
-    location: currentUrl/*,
+    location: currentUrl,
     onError: error => {
       console.error(error);
       throw error;
@@ -20,21 +20,15 @@ async function getAppData(currentUrl, render) {
 
       if (abortReason.constructor.name === 'Redirect') {
         const { to, params, query } = abortReason;
-        // TODO: How does this access router?
-        console.error("This should not be executed.");
-        const url = router.makePath(to, params, query);
+        const url = Router.makePath(to, params, query);
         error.redirect = url;
       }
 
       throw error;
     }
-    */
   });
 
   router.run(async function (Handler, state) {
-    // TODO: Fatal error, whenever this is re-run in the case of the
-    //       client 'resolve' no longer exists.
-    //       We do not want to resolve, we want to re-render.
     const appData = { router, flux, Handler, state };
 
     try {
@@ -49,4 +43,4 @@ async function getAppData(currentUrl, render) {
   return router;
 }
 
-export default getAppData;
+export default loadApp;

@@ -3,7 +3,7 @@ import Router from 'react-router';
 import FluxComponent from 'flummox/component';
 import url from 'url';
 
-import getAppData from '../../shared/get-app-data';
+import loadApp from '../../shared/load-app';
 
 async function main() {
   const currentUrl = Router.HistoryLocation;
@@ -21,7 +21,7 @@ async function main() {
   };
 
   try {
-    await getAppData(currentUrl, render);
+    await loadApp(currentUrl, render);
   } catch (error) {
     if (error.redirect) {
       return redirect(error.redirect);
@@ -29,31 +29,6 @@ async function main() {
 
     throw error;
   }
-
-  // Intercept local route changes
-  /*
-  document.onclick = event => {
-    console.log('clicking');
-    const { toElement: target } = event;
-
-    if (!target) return;
-
-    if (target.tagName !== 'A') return;
-
-    const href = target.getAttribute('href');
-
-    if (!href) return;
-
-    const resolvedHref = url.resolve(window.location.href, href);
-    const { host, path } = url.parse(resolvedHref);
-
-    if (host === window.location.host) {
-      event.preventDefault();
-      console.log(path);
-      router.transitionTo(path);
-    }
-  };
-  */
 }
 
 main();

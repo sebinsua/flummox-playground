@@ -2,7 +2,7 @@ import React from 'react';
 import FluxComponent from 'flummox/component';
 import nunjucks from 'nunjucks';
 
-import getAppData from '../../shared/get-app-data';
+import loadApp from '../../shared/load-app';
 
 export default function (app) {
   nunjucks.configure('./server/app/views', {
@@ -27,7 +27,7 @@ export default function (app) {
     };
 
     try {
-      await getAppData(currentUrl, render);
+      await loadApp(currentUrl, render);
     } catch (error) {
       if (error.redirect) {
         return redirect(error.redirect);
