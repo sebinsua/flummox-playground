@@ -13,12 +13,21 @@ export default function (app) {
   app.use(async function (req, res) {
     const currentUrl = req.url;
     const redirect = res.redirect;
-    const render = (data) => {
-      res.render('index.html', data);
+    const render = (flux, Handler, state) => {
+      const appString = React.renderToString(
+        <FluxComponent flux={flux}>
+          <Handler {...state} />
+        </FluxComponent>
+      );
+
+      res.render('index.html', {
+        appString: appString,
+        NODE_ENV: process.env.NODE_ENV
+      });
     };
 
     try {
-      var { flux, Handler, state } = await getAppData(currentUrl);
+      await getAppData(currentUrl, render);
     } catch (error) {
       if (error.redirect) {
         return redirect(error.redirect);
@@ -26,16 +35,5 @@ export default function (app) {
 
       throw error;
     }
-
-    const appString = React.renderToString(
-      <FluxComponent flux={flux}>
-        <Handler {...state} />
-      </FluxComponent>
-    );
-
-    render({
-      appString: appString,
-      NODE_ENV: process.env.NODE_ENV
-    });
   });
 }

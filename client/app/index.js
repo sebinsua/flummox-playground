@@ -11,9 +11,17 @@ async function main() {
     console.error('redirect is not supported on the client yet');
     console.log(url);
   };
+  const render = (flux, Handler, state) => {
+    React.render(
+      <FluxComponent flux={flux}>
+        <Handler {...state} />
+      </FluxComponent>,
+      document.getElementById('app')
+    );
+  };
 
   try {
-    var { router, flux, Handler, state } = await getAppData(currentUrl);
+    await getAppData(currentUrl, render);
   } catch (error) {
     if (error.redirect) {
       return redirect(error.redirect);
@@ -21,13 +29,6 @@ async function main() {
 
     throw error;
   }
-
-  React.render(
-    <FluxComponent flux={flux}>
-      <Handler {...state} />
-    </FluxComponent>,
-    document.getElementById('app')
-  );
 
   // Intercept local route changes
   /*

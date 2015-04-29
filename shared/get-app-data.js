@@ -4,7 +4,7 @@ import performRouteHandlerStaticMethod from './utils/perform-route-handler-stati
 import Flux from './flux';
 import routes from './routes';
 
-async function getAppData(currentUrl) {
+async function getAppData(currentUrl, render) {
   const flux = new Flux();
 
   const router = Router.create({
@@ -31,24 +31,22 @@ async function getAppData(currentUrl) {
     */
   });
 
-  const { Handler, state } = await new Promise((resolve, reject) => {
-    router.run((_Handler, _state) => {
-      // TODO: Fatal error, whenever this is re-run in the case of the
-      //       client 'resolve' no longer exists.
-      //       We do not want to resolve, we want to re-render.
-      resolve({ Handler: _Handler, state: _state })
-    });
+  router.run(async function (Handler, state) {
+    // TODO: Fatal error, whenever this is re-run in the case of the
+    //       client 'resolve' no longer exists.
+    //       We do not want to resolve, we want to re-render.
+    const appData = { router, flux, Handler, state };
+
+    try {
+      await performRouteHandlerStaticMethod(state.routes, 'routerWillRun', appData);
+    } catch (error) {
+      console.error(error);
+    }
+
+    render(flux, Handler, state);
   });
 
-  const appData = { router, flux, Handler, state };
-
-  try {
-    await performRouteHandlerStaticMethod(state.routes, 'routerWillRun', appData);
-  } catch (error) {
-    console.error(error);
-  }
-
-  return appData;
+  return router;
 }
 
 export default getAppData;
