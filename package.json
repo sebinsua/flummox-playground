@@ -10,7 +10,7 @@
     "dev": "NODE_ENV=development node server",
     "test": "npm run unit && npm run lint",
     "lint": "./node_modules/.bin/eslint .",
-    "unit": "./node_modules/.bin/mocha --compilers js:babel/register --recursive --reporter spec"
+    "unit": "./node_modules/.bin/mocha test/unit --compilers js:babel/register --require test/unit/helpers --recursive --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "babel": "^5.1.13",
     "babel-core": "^5.1.13",
     "babel-eslint": "^3.0.1",
+    "bluebird": "^2.9.25",
     "express": "^4.12.3",
     "express-static": "^1.0.3",
     "flummox": "^4.0.0-alpha",
@@ -48,12 +49,17 @@
   "devDependencies": {
     "babel-loader": "^5.0.0",
     "babel-runtime": "^5.1.13",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.0.0",
     "css-loader": "^0.12.0",
     "eslint": "^0.20.0",
     "eslint-plugin-react": "^2.2.0",
     "node-sass": "^2.1.1",
     "react-hot-loader": "^1.2.5",
     "sass-loader": "^0.6.0",
+    "sinon": "^1.14.1",
+    "sinon-as-promised": "^3.0.0",
+    "sinon-chai": "^2.7.0",
     "style-loader": "^0.12.1",
     "webpack": "^1.8.10",
     "webpack-dev-server": "^1.8.2"
