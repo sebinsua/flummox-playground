@@ -6,7 +6,11 @@ import config from '../../webpack.config.dev';
 const webpack = webpackInit(config);
 const webpackDevServer = new WebpackDevServer(webpack, {
   publicPath: config.output.publicPath,
-  hot: true
+  hot: true,
+  noInfo: true,
+  stats: {
+    colors: true
+  }
 });
 
 const PORT = 8081;

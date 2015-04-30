@@ -35,6 +35,7 @@
     "babel": "^5.1.13",
     "babel-core": "^5.1.13",
     "babel-eslint": "^3.0.1",
+    "babel-runtime": "^5.1.13",
     "bluebird": "^2.9.25",
     "express": "^4.12.3",
     "express-static": "^1.0.3",

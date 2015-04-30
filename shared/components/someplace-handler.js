@@ -5,7 +5,7 @@ class SomeplaceHandler extends React.Component {
   render() {
     return (
       <div>
-        <span>You have reached some place.</span>
+        <span>You have reached some places.</span>
       </div>
     );
   }

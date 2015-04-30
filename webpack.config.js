@@ -8,6 +8,7 @@ module.exports = {
   colors: true,
   entry: [
     './client/app'
+    // ,
     // './scss/app'
   ],
   output: {
@@ -26,11 +27,12 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['', '.js', '.scss']
+    extensions: ['', '.js'/*, '.scss'*/]
   },
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ }
+      // ,
       // { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   }
