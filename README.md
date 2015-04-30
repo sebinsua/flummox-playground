@@ -4,7 +4,6 @@
 _____
 
 - [ ] Fix the Webpack error: https://github.com/webpack/webpack/issues/904
-- [ ] Place these in the webpack: &externalHelpers
 
 _____
 
