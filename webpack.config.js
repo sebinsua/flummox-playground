@@ -23,7 +23,7 @@ module.exports = {
     publicPath: '/assets/'
   },
   plugins: [
-    new ExtractTextPlugin("[name].min.css"),
+    new ExtractTextPlugin('[name].min.css'),
 
     new webpack.DefinePlugin({
       'process.env.BROWSER': JSON.stringify(true),

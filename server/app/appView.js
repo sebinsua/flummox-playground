@@ -1,16 +1,11 @@
 import React from 'react';
 import FluxComponent from 'flummox/component';
-import nunjucks from 'nunjucks';
+import HtmlDocument from './views/html-document';
 
 import loadApp from '../../shared/load-app';
 
 export default function (app) {
   const NODE_ENV = app.get('env');
-
-  nunjucks.configure('./server/app/views', {
-    autoescape: true,
-    express: app
-  });
 
   app.use(async function (req, res) {
     const currentUrl = req.url;
@@ -21,11 +16,15 @@ export default function (app) {
           <Handler {...state} />
         </FluxComponent>
       );
-
-      res.render('index.html', {
-        appString: appString,
-        NODE_ENV: NODE_ENV
-      });
+      const html = React.renderToStaticMarkup(
+        <HtmlDocument
+          lang={ 'en-GB' }
+          env={ NODE_ENV }
+          appString={ appString }
+        />
+      );
+      const doctype = '<!DOCTYPE html>';
+      res.send(doctype + html);
     };
 
     try {
