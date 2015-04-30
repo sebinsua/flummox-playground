@@ -5,8 +5,9 @@
   "main": "./app.js",
   "scripts": {
     "postinstall": "npm run build",
+    "start": "npm run build && npm run prod",
     "build": "./node_modules/.bin/webpack --config webpack.config.js",
-    "start": "NODE_ENV=production node server",
+    "prod": "NODE_ENV=production node server",
     "dev": "NODE_ENV=development node server",
     "test": "npm run unit && npm run lint",
     "lint": "./node_modules/.bin/eslint .",
