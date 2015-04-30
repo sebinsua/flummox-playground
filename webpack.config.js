@@ -3,37 +3,45 @@
 
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var assetsPath = path.join(__dirname, '/public/assets/');
 
 module.exports = {
   colors: true,
-  entry: [
-    './client/app'
-    // ,
-    // './scss/app'
-  ],
+  progress: true,
+  devtool: 'source-map',
+  entry: {
+    'app': [
+      './client/app',
+      './scss/app.scss'
+    ]
+  },
   output: {
-    path: path.join(__dirname, '/public/js/'),
-    filename: 'app.min.js',
-    publicPath: '/js/'
+    path: assetsPath,
+    filename: '[name].min.js',
+    publicPath: '/assets/'
   },
   plugins: [
+    new ExtractTextPlugin("[name].min.css"),
+
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.BROWSER': JSON.stringify(true),
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
+
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
           warnings: false
       }
     })
   ],
-  resolve: {
-    extensions: ['', '.js'/*, '.scss'*/]
-  },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ }
-      // ,
-      // { test: /\.scss$/, loader: 'style!css!sass' }
+      { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') }
     ]
   }
 };

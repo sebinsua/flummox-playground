@@ -1,5 +1,5 @@
-- [ ] Generate public/css/app.min.css. See: https://github.com/jtangelder/sass-loader
-- [ ] Get the styling to work with hot loading.
+- [x] Generate public/css/app.min.css. See: https://github.com/jtangelder/sass-loader
+- [x] Get the styling to work with hot loading.
 
 _____
 

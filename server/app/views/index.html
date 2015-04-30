@@ -11,9 +11,10 @@
     <div id="app">{{ appString | safe }}</div>
 
     {% if NODE_ENV == 'development' %}
-      <script src="http://localhost:8081/js/app.js" defer></script>
+      <script src="http://localhost:8081/assets/app.js" defer></script>
     {% else %}
-      <script src="/js/app.min.js" defer></script>
+      <link rel="stylesheet" type="text/css" href="/assets/app.min.css">
+      <script src="/assets/app.min.js" defer></script>
     {% endif %}
   </body>
 </html>

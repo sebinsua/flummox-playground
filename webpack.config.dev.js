@@ -4,38 +4,45 @@
 var webpack = require('webpack');
 var path = require('path');
 
+var assetsPath = path.join(__dirname, '/public/assets/');
+
+var HOST = 'localhost';
+var PORT = 8081;
+
 module.exports = {
   watch: true,
   colors: true,
-  devtool: 'inline-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8081',
-    'webpack/hot/only-dev-server',
-    './client/app'
-    // ,
-    // './scss/app'
-  ],
+  progress: true,
+  devtool: 'cheap-inline-source-map',
+  entry: {
+    'app': [
+      'webpack-dev-server/client?http://' + HOST + ':' + PORT,
+      'webpack/hot/only-dev-server',
+      './client/app',
+      './scss/app.scss'
+    ]
+  },
   output: {
-    path: path.join(__dirname, '/public/js/'),
-    filename: 'app.js',
-    publicPath: 'http://localhost:8081/js/'
+    path: assetsPath,
+    filename: '[name].js',
+    publicPath: 'http://' + HOST + ':' + PORT + '/assets/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL)
-    })
+      'process.env.BROWSER': JSON.stringify(true),
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
-  resolve: {
-    extensions: ['', '.js'/*, '.scss' */]
-  },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ }
-      // ,
-      // { test: /\.scss$/, loader: 'style!css!sass' }
+      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
+      { test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true' }
     ]
   }
 };
