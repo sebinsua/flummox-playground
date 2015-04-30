@@ -2,7 +2,12 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": 0,
-    "quotes": [1, "single"]
+    "quotes": [1, "single"],
+    "indent": [2, 2],
+    "react/jsx-uses-react": 1
   },
-  "plugins": ["react"]
+  "plugins": ["react"],
+  "ecmaFeatures": {
+    "jsx": true
+  }
 }
