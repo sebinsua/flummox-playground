@@ -1,6 +1,8 @@
 import React from 'react';
 import FluxComponent from 'flummox/component';
+
 import HtmlDocument from './views/html-document';
+import DocumentTitle from 'react-document-title';
 
 import loadApp from '../../shared/load-app';
 
@@ -25,6 +27,8 @@ export default function (app) {
       );
       const doctype = '<!DOCTYPE html>';
       res.send(doctype + html);
+
+      DocumentTitle.rewind();
     };
 
     try {
