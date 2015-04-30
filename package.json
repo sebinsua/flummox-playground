@@ -9,7 +9,7 @@
     "start": "NODE_ENV=production node server",
     "dev": "NODE_ENV=development node server",
     "test": "npm run unit && npm run lint",
-    "lint": "",
+    "lint": "./node_modules/.bin/eslint .",
     "unit": ""
   },
   "repository": {
@@ -34,6 +34,7 @@
   "dependencies": {
     "babel": "^5.1.13",
     "babel-core": "^5.1.13",
+    "babel-eslint": "^3.0.1",
     "express": "^4.12.3",
     "express-static": "^1.0.3",
     "flummox": "^4.0.0-alpha",
@@ -48,6 +49,8 @@
     "babel-loader": "^5.0.0",
     "babel-runtime": "^5.1.13",
     "css-loader": "^0.12.0",
+    "eslint": "^0.20.0",
+    "eslint-plugin-react": "^2.2.0",
     "node-sass": "^2.1.1",
     "react-hot-loader": "^1.2.5",
     "sass-loader": "^0.6.0",

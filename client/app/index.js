@@ -1,7 +1,6 @@
 import React from 'react';
 import Router from 'react-router';
 import FluxComponent from 'flummox/component';
-import url from 'url';
 
 import loadApp from '../../shared/load-app';
 

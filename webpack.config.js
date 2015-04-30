@@ -1,3 +1,4 @@
+/* eslint-env node */
 'use strict';
 
 var webpack = require('webpack');
@@ -16,20 +17,20 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    })/*,
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
           warnings: false
       }
-    })*/
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.scss']
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
+      { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ }
       // { test: /\.scss$/, loader: 'style!css!sass' }
     ]
   }

@@ -10,7 +10,9 @@ if (typeof window === 'undefined') {
 }
 
 export function siteUrl(to) {
-  if (typeof to === 'undefined') return baseUrl;
+  if (typeof to === 'undefined') {
+    return baseUrl;
+  }
 
   return url.resolve(baseUrl, to);
 }

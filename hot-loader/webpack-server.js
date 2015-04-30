@@ -5,10 +5,13 @@ import config from '../webpack.config.dev';
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
-  hot: true,
+  hot: true
 })
 .listen(8081, 'localhost', function (err, result) {
-  if (err) console.log(err);
+  if (err) {
+    console.error(err);
+  }
 
   console.log('Dev server listening at localhost:8081');
+  console.log(result);
 });

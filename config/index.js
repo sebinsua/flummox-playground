@@ -2,13 +2,12 @@
 /* eslint no-underscore-dangle: 0 */
 
 import fs from 'mz/fs';
-import path from 'path';
 
 import _ from 'lodash';
 
 const CONFIG_PATH = '/etc/flummox-playground/config.json';
 
-const defaultConfig = require('./default.json'),
+const defaultConfig = require('./default.json');
 const instanceConfig = fs.existsSync(CONFIG_PATH) ? require(CONFIG_PATH) : {};
 const envConfig = _.pick(process.env, Object.keys(defaultConfig));
 

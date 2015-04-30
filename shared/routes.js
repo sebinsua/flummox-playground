@@ -1,5 +1,4 @@
-import React from 'react';
-import { Route, Redirect, DefaultRoute } from 'react-router';
+import { Route } from 'react-router';
 
 import AppHandler from './components/app-handler';
 import SomeplaceHandler from './components/someplace-handler';
