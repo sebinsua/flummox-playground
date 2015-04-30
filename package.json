@@ -2,7 +2,7 @@
   "name": "flummox-playground",
   "version": "0.0.1",
   "description": "A Flummox Playground",
-  "main": "server/index.js",
+  "main": "./app.js",
   "scripts": {
     "postinstall": "npm run build",
     "build": "./node_modules/.bin/webpack --config webpack.config.js",
