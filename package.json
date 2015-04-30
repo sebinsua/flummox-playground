@@ -10,7 +10,7 @@
     "dev": "NODE_ENV=development node server",
     "test": "npm run unit && npm run lint",
     "lint": "./node_modules/.bin/eslint .",
-    "unit": ""
+    "unit": "./node_modules/.bin/mocha --compilers js:babel/register --recursive --reporter spec"
   },
   "repository": {
     "type": "git",
