@@ -1,8 +1,3 @@
-- [ ] Can webpack be made to watch instead of the need for nodemon.json?
-- [ ] Can there be a start and a dev command within package.json, that use the two webpack configs?
-
-_____
-
 - [ ] Generate public/css/app.min.css. See: https://github.com/jtangelder/sass-loader
 - [ ] Get the styling to work with hot loading.
 
