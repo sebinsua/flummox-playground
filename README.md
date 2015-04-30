@@ -1,7 +1,7 @@
 - [ ] Write some code to:
+  - Load routes for NotFound, Redirect, etc.
+  - Make the react-router aware of authentication.
   - Pass some stores into the app components.
   - Call an action from a page.
   - Display the data received from the action within a div.
-  - Load routes for NotFound, Redirect, etc.
-  - Make the react-router aware of authentication.
 - [ ] Refactor so that it is simpler. Remove code that is not required.
