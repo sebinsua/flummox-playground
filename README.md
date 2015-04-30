@@ -4,7 +4,7 @@
 - [ ] Can there be a start and a dev command within package.json, that use the two webpack configs?
 - [ ] Refactor so that it is simpler. Remove code that is not required.
 - [ ] Take a look at the links within the flux folder of my browser.
-- [ ] Can we get eslint working?
+- [x] Can we get eslint working?
 - [ ] Can we get Mocha working?
 - [ ] Fix the Webpack error: https://github.com/webpack/webpack/issues/904
 - [ ] Place these in the webpack: &externalHelpers
