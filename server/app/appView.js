@@ -5,6 +5,8 @@ import nunjucks from 'nunjucks';
 import loadApp from '../../shared/load-app';
 
 export default function (app) {
+  const NODE_ENV = app.get('env');
+
   nunjucks.configure('./server/app/views', {
     autoescape: true,
     express: app
@@ -22,7 +24,7 @@ export default function (app) {
 
       res.render('index.html', {
         appString: appString,
-        NODE_ENV: process.env.NODE_ENV
+        NODE_ENV: NODE_ENV
       });
     };
 
