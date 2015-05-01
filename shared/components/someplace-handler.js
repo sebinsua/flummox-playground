@@ -13,7 +13,6 @@ class SomeplaceHandler extends FluxComponent {
   }
 
   render() {
-    // TODO: Create an Action that will make the request.
     const { reports } = this.props;
 
     const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>
