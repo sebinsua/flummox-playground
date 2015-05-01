@@ -4,10 +4,10 @@ import FluxComponent from 'flummox/component';
 
 import loadApp from '../../shared/load-app';
 
-async function main() {
+export default async function main() {
   const currentUrl = Router.HistoryLocation;
   const redirect = (url) => {
-    console.error('redirect is not supported on the client yet');
+    console.error('Redirect is not supported on the client yet.');
     console.log(url);
   };
   const render = (flux, Handler, state) => {
@@ -22,6 +22,7 @@ async function main() {
   try {
     await loadApp(currentUrl, render);
   } catch (error) {
+    console.error(error);
     if (error.redirect) {
       return redirect(error.redirect);
     }
@@ -29,5 +30,3 @@ async function main() {
     throw error;
   }
 }
-
-main();

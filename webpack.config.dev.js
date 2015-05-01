@@ -18,7 +18,7 @@ module.exports = {
     'app': [
       'webpack-dev-server/client?http://' + HOST + ':' + PORT,
       'webpack/hot/only-dev-server',
-      './client/app',
+      './client',
       './scss/app.scss'
     ]
   },

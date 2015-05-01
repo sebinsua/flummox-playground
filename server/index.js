@@ -4,7 +4,7 @@ require('babel/register')({
   optional: ['es7.asyncFunctions']
 });
 
-require('../shared/init');
+// require('../shared/init');
 
 var app = require('./app');
 

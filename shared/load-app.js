@@ -7,40 +7,40 @@ import routes from './routes';
 async function loadApp(currentUrl, render) {
   const flux = new Flux();
 
-  const router = Router.create({
-    routes: routes,
-    location: currentUrl,
-    onError: error => {
-      console.error(error);
-      throw error;
-    },
-    onAbort: abortReason => {
-      console.error(abortReason);
-      const error = new Error();
+  return new Promise(function (resolve, reject) {
 
-      if (abortReason.constructor.name === 'Redirect') {
-        const { to, params, query } = abortReason;
-        const url = Router.makePath(to, params, query);
-        error.redirect = url;
+    const router = Router.create({
+      routes: routes,
+      location: currentUrl,
+      onError: error => {
+        reject(error);
+      },
+      onAbort: abortReason => {
+        const error = new Error();
+        if (abortReason.constructor.name === 'Redirect') {
+          const { to, params, query } = abortReason;
+          const url = Router.makePath(to, params, query);
+          error.redirect = url;
+        }
+
+        reject(error);
       }
+    });
 
-      throw error;
-    }
+    router.run(function (Handler, state) {
+      const appData = { router, flux, Handler, state };
+
+      const routerCalledAndRendered = performRouteHandlerStaticMethod(
+        state.routes,
+        'routerWillRun',
+        appData
+      ).then(function () {
+        render(flux, Handler, state);
+      });
+
+      resolve(routerCalledAndRendered);
+    });
   });
-
-  router.run(async function (Handler, state) {
-    const appData = { router, flux, Handler, state };
-
-    try {
-      await performRouteHandlerStaticMethod(state.routes, 'routerWillRun', appData);
-    } catch (error) {
-      console.error(error);
-    }
-
-    render(flux, Handler, state);
-  });
-
-  return router;
 }
 
 export default loadApp;

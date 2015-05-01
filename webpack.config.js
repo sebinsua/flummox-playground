@@ -13,7 +13,7 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     'app': [
-      './client/app',
+      './client',
       './scss/app.scss'
     ]
   },
