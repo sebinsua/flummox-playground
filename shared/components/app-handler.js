@@ -6,6 +6,11 @@ import AppNav from './app-nav';
 
 class AppHandler extends React.Component {
 
+  static async routerWillRun({ flux }) {
+    const passportReportActions = flux.getActions('reports');
+    return await passportReportActions.getReports();
+  }
+
   render() {
     return (
       <DocumentTitle title="Untitled">

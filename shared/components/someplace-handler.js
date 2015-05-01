@@ -1,18 +1,44 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
 
-class SomeplaceHandler extends React.Component {
+// TODO: See if you can simplify.
+import connectToStores from 'flummox/connect';
+import FluxComponent from 'flummox/component';
+
+class SomeplaceHandler extends FluxComponent {
+
+  handleClick(e) {
+    e.preventDefault();
+    this.flux.getActions('reports').getReports();
+  }
 
   render() {
+    // TODO: Create an Action that will make the request.
+    const { reports } = this.props;
+
+    const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>
     return (
       <DocumentTitle title='Someplace'>
         <div>
-          <span>You have reached some places.</span>
+          { clickThis }
+          <ul>
+            {
+              reports.map((report) => {
+                  return <li key={ report.get('id') }>{ report.get('reporterName') }</li>
+              })
+            }
+          </ul>
         </div>
       </DocumentTitle>
     );
   }
 
 }
+
+SomeplaceHandler = connectToStores(SomeplaceHandler, {
+    'reports': store => ({
+        reports: store.getReports()
+    })
+});
 
 export default SomeplaceHandler;
