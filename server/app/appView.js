@@ -34,7 +34,7 @@ export default function (app) {
     try {
       await loadApp(currentUrl, render);
     } catch (error) {
-      // console.error(error);
+      console.error(error);
       if (error.redirect) {
         return redirect(error.redirect);
       }
