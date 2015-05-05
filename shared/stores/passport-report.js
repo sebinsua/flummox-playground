@@ -14,9 +14,9 @@ export default class PassportReportStore extends Store {
   }
 
   handleNewReports(newReports) {
-    const reports = newReports.reduce((reports, report) => {
-      reports[report.id] = report;
-      return reports;
+    const reports = newReports.reduce((acc, report) => {
+      acc[report.id] = report;
+      return acc;
     }, {});
 
     this.setState({

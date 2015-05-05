@@ -25,25 +25,26 @@ class InnerComponent extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.flux.getActions('reports').getReports();
+    const flux = this.props.flux;
+    flux.getActions('reports').getReports();
   }
 
   render() {
     const { reports } = this.props;
 
-    const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>
+    const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>;
     return (
       <div>
         { clickThis }
         <ul>
           {
             reports.map((report) => {
-                return <li key={ report.get('id') }>{ report.get('reporterName') }</li>
+              return <li key={ report.get('id') }>{ report.get('reporterName') }</li>;
             })
           }
         </ul>
       </div>
-    )
+    );
   }
 }
 

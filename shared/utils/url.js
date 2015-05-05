@@ -1,15 +1,9 @@
+import config from '../../config';
 import url from 'url';
 
-let baseUrl;
+const baseUrl = config.REST_EXAMINER_PSN || 'http://localhost:3001';
 
-if (typeof window === 'undefined') {
-  const port = process.env.PORT || 3000;
-  baseUrl = `http://localhost:${port}`;
-} else {
-  baseUrl = '/';
-}
-
-export function siteUrl(to) {
+export default function apiUrl(to) {
   if (typeof to === 'undefined') {
     return baseUrl;
   }

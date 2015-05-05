@@ -1,15 +1,14 @@
 import { Actions } from 'flummox';
-import { siteUrl } from '../utils/url';
+import apiUrl from '../utils/url';
 
 import fetch from 'isomorphic-fetch';
 
 export default class PassportReportActions extends Actions {
 
   async getReports() {
-    const url = siteUrl('/flummox/data/allDocs.json');
-    const response = await fetch('http://localhost:3001/passport-reports');
-    return await response.json().then(function (response) {
-        return response.data;
+    const response = await fetch(apiUrl('/passport-reports'));
+    return await response.json().then(function (body) {
+      return body.data;
     });
   }
 

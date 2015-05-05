@@ -1,6 +1,9 @@
-- [ ] Make the baseUrl from config.
 - [ ] Handle disconnect between the API and the front-end.
-- [ ] Fix the missing favicon.ico.
+- [ ] Handle partial sharing of config between the front-end and back-end.
+      Perhaps use process.env.BROWSER?
+- [x] Make the baseUrl from config.
+- [x] Fix the missing favicon.ico.
+- [x] Lint everything.
 
 _____________________________________________________
 

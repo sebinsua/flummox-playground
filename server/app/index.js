@@ -13,8 +13,8 @@ if (app.get('env') === 'development') {
   require('../hot-loader');
 }
 
-// import favicon from 'serve-favicon';
-// app.use(favicon());
+import favicon from 'serve-favicon';
+app.use(favicon('public/favicon.png'));
 
 import appView from './appView';
 appView(app);

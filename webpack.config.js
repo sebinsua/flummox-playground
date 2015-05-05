@@ -38,6 +38,9 @@ module.exports = {
       }
     })
   ],
+  resolve: {
+    extensions: ['', '.js', '.json']
+  },
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },

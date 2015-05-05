@@ -39,8 +39,12 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin()
   ],
+  resolve: {
+    extensions: ['', '.js', '.json']
+  },
   module: {
     loaders: [
+      { test: /\.json$/, loader: 'json-loader' },
       { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
       { test: /\.scss$/, loader: 'style!css!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true' }
     ]
