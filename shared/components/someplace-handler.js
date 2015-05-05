@@ -1,11 +1,27 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
 
-// TODO: See if you can simplify.
-import connectToStores from 'flummox/connect';
 import FluxComponent from 'flummox/component';
 
-class SomeplaceHandler extends FluxComponent {
+class SomeplaceHandler extends React.Component {
+
+  render() {
+    return (
+      <DocumentTitle title='Someplace'>
+        <FluxComponent connectToStores={{
+            reports: store => ({
+                reports: store.getReports()
+            })
+        }}>
+          <InnerComponent />
+        </FluxComponent>
+      </DocumentTitle>
+    );
+  }
+
+}
+
+class InnerComponent extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
@@ -17,27 +33,18 @@ class SomeplaceHandler extends FluxComponent {
 
     const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>
     return (
-      <DocumentTitle title='Someplace'>
-        <div>
-          { clickThis }
-          <ul>
-            {
-              reports.map((report) => {
-                  return <li key={ report.get('id') }>{ report.get('reporterName') }</li>
-              })
-            }
-          </ul>
-        </div>
-      </DocumentTitle>
-    );
+      <div>
+        { clickThis }
+        <ul>
+          {
+            reports.map((report) => {
+                return <li key={ report.get('id') }>{ report.get('reporterName') }</li>
+            })
+          }
+        </ul>
+      </div>
+    )
   }
-
 }
-
-SomeplaceHandler = connectToStores(SomeplaceHandler, {
-    'reports': store => ({
-        reports: store.getReports()
-    })
-});
 
 export default SomeplaceHandler;
