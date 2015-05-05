@@ -36,6 +36,8 @@ async function loadApp(currentUrl, render) {
         appData
       ).then(function () {
         render(flux, Handler, state);
+      }).catch(function () {
+        render(flux, Handler, state);
       });
 
       resolve(routerCalledAndRendered);
