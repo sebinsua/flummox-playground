@@ -1,5 +1,3 @@
-- [ ] Handle partial sharing of config between the front-end and back-end.
-      Perhaps use process.env.BROWSER?
 - [ ] Load routes for NotFound, Redirect, etc.
 
 _____________________________________________________

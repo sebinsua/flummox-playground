@@ -25,6 +25,8 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('[name].min.css'),
 
+    new webpack.NormalModuleReplacementPlugin(/get-instance-config/, process.cwd() + '/client/mocks/return-empty-object.js'),
+
     new webpack.DefinePlugin({
       'process.env.BROWSER': JSON.stringify(true),
       'process.env.NODE_ENV': JSON.stringify('production')
