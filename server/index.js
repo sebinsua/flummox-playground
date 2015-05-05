@@ -4,8 +4,6 @@ require('babel/register')({
   optional: ['es7.asyncFunctions']
 });
 
-// require('../shared/init');
-
 var app = require('./app');
 
 var port = process.env.PORT || 3000;

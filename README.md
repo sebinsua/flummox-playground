@@ -1,13 +1,19 @@
-- [x] Write better FluxComponents.
-- [ ] Test if the browser is running the JS or not.
-- [ ] Switch off the JavaScript and see what happens.
 - [ ] Make the baseUrl from config.
+- [ ] Handle disconnect between the API and the front-end.
+- [ ] Fix the missing favicon.ico.
 
 _____________________________________________________
 
-- [ ] Pass some stores into the app components.
-- [ ] Call an action from a page.
-- [ ] Display the data received from the action within a div.
+- [x] Write better FluxComponents.
+- [x] Test if the browser is running the JS or not.
+- [x] Switch off the JavaScript and see what happens.
+      NOTE: When JavaScript is switched off we are not able to handle the JavaScript-based onClick events.
+
+_____________________________________________________
+
+- [x] Pass some stores into the app components.
+- [x] Call an action from a page.
+- [x] Display the data received from the action within a div.
 
 _____________________________________________________
 
