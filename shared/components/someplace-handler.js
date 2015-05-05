@@ -10,7 +10,8 @@ class SomeplaceHandler extends React.Component {
       <DocumentTitle title='Someplace'>
         <FluxComponent connectToStores={{
             reports: store => ({
-                reports: store.getReports()
+                reports: store.getReports(),
+                message: store.getMessage()
             })
         }}>
           <InnerComponent />
@@ -30,12 +31,17 @@ class InnerComponent extends React.Component {
   }
 
   render() {
-    const { reports } = this.props;
+    const { reports, message } = this.props;
 
     const clickThis = <span onClick={this.handleClick.bind(this)}>Load</span>;
+    let messageEl;
+    if (message) {
+      messageEl = <div className="message">{ message }</div>;
+    }
     return (
       <div>
         { clickThis }
+        { messageEl }
         <ul>
           {
             reports.map((report) => {

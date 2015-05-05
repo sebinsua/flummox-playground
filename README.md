@@ -1,7 +1,3 @@
-- [ ] Load routes for NotFound, Redirect, etc.
-
-_____________________________________________________
-
 - [ ] Make the react-router aware of authentication.
 
 _____________________________________________________
