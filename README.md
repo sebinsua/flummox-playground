@@ -1,4 +1,4 @@
-- [ ] Make the react-router aware of authentication.
+- [ ] Work out at what point HMR broke.
 
 _____________________________________________________
 
