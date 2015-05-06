@@ -45,6 +45,7 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.json$/, loader: 'json-loader' },      
       { test: /\.jsx?$/, loaders: ['babel?externalHelpers&optional[]=es7.asyncFunctions,optional[]=runtime'], exclude: /node_modules/ },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') }
     ]
